@@ -1,7 +1,7 @@
 # DIAGNOSIS BACKEND SYSTEM
 
 [![diagnosis CI](https://github.com/horlali/diagnosis-backend/actions/workflows/diagnosis-ci.yml/badge.svg)](https://github.com/horlali/diagnosis-backend/actions/workflows/diagnosis-ci.yml)
-[![codecov](https://codecov.io/gh/horlali/diagnosis-backend/branch/main/graph/badge.svg?token=PYZ7F49U17)](https://codecov.io/gh/horlali/diagnosis-backend)
+[![codecov](https://codecov.io/gh/horlali/diagnosis-backend/branch/main/graph/badge.svg?token=XPAKK65GCC)](https://codecov.io/gh/horlali/diagnosis-backend)
 
 Diagnosis backend challenge
 
