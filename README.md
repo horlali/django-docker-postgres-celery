@@ -14,6 +14,14 @@ git clone https://github.com/horlali/diagnosis-backend
 cd diagnosis-backend/
 ```
 
+Create and fill out the necessary environment files (`.env.dev`, `.env.test`, `.env.prod`) and  variables
+
+```bash
+cp .env.example .env.dev # for development environment
+cp .env.example .env.prod # for production environment
+cp .env.example .env.test # for testing environment
+```
+
 Build and start the application with docker-compose
 Obtain or create necessary environment files
 
