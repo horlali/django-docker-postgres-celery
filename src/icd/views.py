@@ -1,14 +1,13 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
-from icd.models import Category, Diagnosis
+from icd.models import Category, Diagnosis, File
 from icd.paginations import CustomPagination
-from icd.serializers import CategorySerializer, DiagnosisSerializer
+from icd.serializers import CategorySerializer, DiagnosisSerializer, FilesSerializier
 
 
-class CategoryListView(ListCreateAPIView):
+class CategoryListCreateView(ListCreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
@@ -22,7 +21,7 @@ class CategoryDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
 
 
-class DiagnosisListView(ListCreateAPIView):
+class DiagnosisListCreateView(ListCreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = DiagnosisSerializer
     queryset = Diagnosis.objects.all()
@@ -36,9 +35,16 @@ class DiagnosisDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
 
 
-class UploadICDFileView(APIView):
-    permission_classes = [IsAuthenticated | AllowAny]
-    # serializer_class = DiagnosisSerializer
+class UploadICDFileView(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = FilesSerializier
+
+    def get_queryset(self):
+        return File.objects.filter(user=self.request.user)
 
     def post(self, request, *args, **kwargs):
-        return Response({"message": "Got some data!", "data": request.data})
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user=self.request.user)
+
+        return Response(serializer.data, status=201)

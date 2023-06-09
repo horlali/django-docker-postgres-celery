@@ -16,6 +16,7 @@ gevent = "^22.10.2"
 drf-yasg = "^1.21.5"
 django-cors-headers = "^4.0.0"
 whitenoise = "^6.4.0"
+sendgrid = "^6.10.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"

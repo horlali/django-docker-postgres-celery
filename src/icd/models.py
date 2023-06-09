@@ -1,18 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-
-class ICD_Types(models.TextChoices):
-    ICD_9 = "ICD_9", "ICD_9"
-    ICD_10 = "ICD_10", "ICD_10"
-    ICD_11 = "ICD_11", "ICD_11"
-
-
-class IcdBaseModel(models.Model):
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
-
-    class Meta:
-        abstract = True
+from icd.extensions import ICD_Types, IcdBaseModel, file_upload_path
 
 
 class Category(IcdBaseModel):
@@ -40,3 +29,13 @@ class Diagnosis(IcdBaseModel):
     @property
     def full_code(self):
         return f"{self.category.category_code}{self.diagnosis_code if self.diagnosis_code else ''}"  # noqa: E501
+
+    class Meta:
+        verbose_name_plural = "Diagnoses"
+
+
+class File(models.Model):
+    file = models.FileField(upload_to=file_upload_path)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    uploaded_at = models.DateTimeField(auto_now_add=True)

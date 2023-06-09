@@ -14,6 +14,14 @@ git clone https://github.com/horlali/diagnosis-backend
 cd diagnosis-backend/
 ```
 
+Create and fill out the necessary environment files (`.env.dev`, `.env.test`, `.env.prod`) and  variables
+
+```bash
+cp .env.example .env.dev # for development environment
+cp .env.example .env.prod # for production environment
+cp .env.example .env.test # for testing environment
+```
+
 Build and start the application with docker-compose
 Obtain or create necessary environment files
 
@@ -59,6 +67,8 @@ This should fix the issues. Rerun `./script/run-docker.sh --dev` to start the ap
 - [black](https://github.com/psf/black) for code styling
 - [isort](https://pycqa.github.io/isort/) for import sorting styling
 - [flake8](https://flake8.pycqa.org/en/latest/) for linting
+- [pytest](https://docs.pytest.org/) for unittesting
+- [coverage](https://coverage.readthedocs.io/) for coverage report
 
 In the `scripts/` folder there are 3 scripts that can be used to check and correct formatting, styling and standards problems `run-black.sh`, `run-flake8.sh`, `run-isort.sh`. The scripts will only check by default, if you would like to correct the errors you need to pass the `--fix` option. If you are using `zsh` and got some errors, consider execution via `bash`
 
