@@ -11,14 +11,6 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class DiagnosisSerializer(serializers.ModelSerializer):
     category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
-    # category_code = serializers.SerializerMethodField()
-    # category_title = serializers.SerializerMethodField()
-
-    # def get_category_code(self, obj):
-    #     return str(obj.category.category_code)
-
-    # def get_category_title(self, obj):
-    #     return str(obj.category.category_title)
 
     class Meta:
         model = Diagnosis
@@ -30,6 +22,4 @@ class DiagnosisSerializer(serializers.ModelSerializer):
             "abbreviated_desc",
             "full_desc",
             "full_code",
-            # "category_code",
-            # "category_title",
         ]
