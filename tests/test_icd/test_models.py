@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from icd.models import Category, Diagnosis, ICD_Types
+from icd.models import Category, Diagnosis
 
 
 class CategoryModelTest(TestCase):
