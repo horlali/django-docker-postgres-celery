@@ -10,7 +10,7 @@ from icd.serializers import CategorySerializer, DiagnosisSerializer
 
 class CategoryListView(ListCreateAPIView):
     permission_classes = [AllowAny]
-    serializer_class = DiagnosisSerializer
+    serializer_class = CategorySerializer
     queryset = Category.objects.all()
     pagination_class = CustomPagination
 
