@@ -56,8 +56,6 @@ sed -i -e 's/\r$//' scripts/*
 
 This should fix the issues. Rerun `./script/run-docker.sh --dev` to start the application
 
-## Application Docs
-
 ## Dev Toolchain
 
 - [docker](https://www.docker.com/) containerization
@@ -66,10 +64,8 @@ This should fix the issues. Rerun `./script/run-docker.sh --dev` to start the ap
 - [black](https://github.com/psf/black) for code styling
 - [isort](https://pycqa.github.io/isort/) for import sorting styling
 - [flake8](https://flake8.pycqa.org/en/latest/) for linting
-- [pytest](https://docs.pytest.org/) for unittesting
+- [pytest](https://docs.pytest.org/) for unit testing
 - [coverage](https://coverage.readthedocs.io/) for coverage report
-
-In the `scripts/` folder there are 3 scripts that can be used to check and correct formatting, styling and standards problems `run-black.sh`, `run-flake8.sh`, `run-isort.sh`. The scripts will only check by default, if you would like to correct the errors you need to pass the `--fix` option. If you are using `zsh` and got some errors, consider execution via `bash`
 
 ## Setup Local Environment
 
@@ -88,6 +84,8 @@ In the root of the repository `:~/diagnosis-backend` run the scripts below
 
 ## Running linters
 
+In the `scripts/` folder there are 3 scripts that can be used to check and correct formatting, styling and linting problems `run-black.sh`, `run-flake8.sh`, `run-isort.sh`. The scripts will only check by default, if you would like to correct the errors you need to pass the `--fix` option. If you are using `zsh` and got some errors, consider execution via `bash`
+
 In the root of the repository `:~/diagnosis-backend` run the scripts below
 
 ```bash
@@ -96,15 +94,15 @@ In the root of the repository `:~/diagnosis-backend` run the scripts below
 ./scripts/run-flake8.sh
 ```
 
-or yo can simply run all the linters by using the `run-linters.sh` scripts
+or you can simply run all the linters by using the `run-linters.sh` scripts
 
 ```bash
 ./scripts/run-linters.sh # add --fix flag to automatically fix linting and formatting issues
 ```
 
-## Sample Request
+## Sample Request and Application Docs
 
-Once the application is up and running, visit <http://127.0.0.1:8000/> or <localhost:8000> or in your browser
+Once the application is up and running, visit <http://127.0.0.1:8000/> or <http://localhost:8000> or in your browser
 
 You should see a Swagger Documentation Page like this
 
