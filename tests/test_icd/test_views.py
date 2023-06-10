@@ -1,6 +1,12 @@
+import os
+
 from rest_framework import status
 
-from tests.test_icd.test_setup import CategoryTestSetup, DiagnosisTestSetup
+from tests.test_icd.test_setup import (
+    CategoryTestSetup,
+    DiagnosisTestSetup,
+    FileTestSetup,
+)
 
 
 class CategoryViewsTest(CategoryTestSetup):
@@ -77,3 +83,15 @@ class DiagnosisViewTest(DiagnosisTestSetup):
     def test_delete_diagnosis(self):
         response = self.client.delete(self.diagnosis_detail_url, format="json")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+
+class FileViewTest(FileTestSetup):
+    def test_list_files(self):
+        response = self.client.get(self.file_upload_url, format="json")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_add_file(self):
+        file_path = os.path.join(os.path.dirname(__file__), "test_file.csv")
+        file = {"file": open(file_path, "rb")}
+        response = self.client.post(self.file_upload_url, data=file)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)

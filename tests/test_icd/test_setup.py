@@ -1,7 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework.test import APITestCase
 
-from icd.models import Category, Diagnosis
+from icd.models import Category, Diagnosis, File
+
+User = get_user_model()
 
 
 class CategoryTestSetup(APITestCase):
@@ -52,3 +55,15 @@ class DiagnosisTestSetup(APITestCase):
             "diagnosis-detail",
             kwargs={"id": self.category.id},
         )
+
+
+class FileTestSetup(APITestCase):
+    def setUp(self) -> None:
+        self.user = User.objects.create_user(
+            username="testuser",
+            email="test@example.com",
+            password="testpass",
+        )
+        self.file = File.objects.create(file="test.csv", user=self.user)
+        self.file_upload_url = reverse("upload")
+        self.client.force_authenticate(user=self.user)
