@@ -32,6 +32,7 @@ class Diagnosis(IcdBaseModel):
 
     class Meta:
         verbose_name_plural = "Diagnoses"
+        ordering = ["id"]
 
 
 class File(models.Model):
