@@ -9,6 +9,7 @@ class Category(IcdBaseModel):
     category_title = models.CharField(max_length=1024)
 
     class Meta:
+        verbose_name_plural = "Categories"
         ordering = ["category_code"]
 
     def __str__(self):
