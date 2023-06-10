@@ -1,7 +1,7 @@
 # DIAGNOSIS BACKEND SYSTEM
 
-[![diagnosis CI](https://github.com/horlali/diagnosis-backend/actions/workflows/diagnosis-ci.yml/badge.svg)](https://github.com/horlali/diagnosis-backend/actions/workflows/diagnosis-ci.yml)
-[![codecov](https://codecov.io/gh/horlali/diagnosis-backend/branch/main/graph/badge.svg?token=XPAKK65GCC)](https://codecov.io/gh/horlali/diagnosis-backend)
+[![Diagnosis CI](https://github.com/horlali/diagnosis-backend/actions/workflows/diagnosis-ci.yml/badge.svg)](https://github.com/horlali/diagnosis-backend/actions/workflows/diagnosis-ci.yml)
+[![CodeCov](https://codecov.io/gh/horlali/diagnosis-backend/branch/main/graph/badge.svg?token=XPAKK65GCC)](https://codecov.io/gh/horlali/diagnosis-backend)
 
 Diagnosis backend challenge
 
@@ -58,14 +58,16 @@ This should fix the issues. Rerun `./script/run-docker.sh --dev` to start the ap
 
 ## Dev Toolchain
 
-- [docker](https://www.docker.com/) containerization
-- [python ^3.11](https://www.python.org/) main programming language
-- [poetry](https://python-poetry.org/) for dependency management
-- [black](https://github.com/psf/black) for code styling
-- [isort](https://pycqa.github.io/isort/) for import sorting styling
-- [flake8](https://flake8.pycqa.org/en/latest/) for linting
-- [pytest](https://docs.pytest.org/) for unit testing
-- [coverage](https://coverage.readthedocs.io/) for coverage report
+| Tool                                              | Description               |
+| :------------------------------------------------ | :------------------------ |
+| [Docker](https://www.docker.com/)                 | containerization          |
+| [Python ^3.11](https://www.python.org/)           | main programming language |
+| [Poetry](https://python-poetry.org/)              | dependency management     |
+| [Black](https://github.com/psf/black)             | code formatting           |
+| [Isort](https://pycqa.github.io/isort/)           | import sorting            |
+| [Flake8](https://flake8.pycqa.org/en/latest/)     | style guide               |
+| [Pytest](https://docs.pytest.org/)                | unit testing              |
+| [Coverage](https://coverage.readthedocs.io/)      | coverage report           |
 
 ## Setup Local Environment
 
