@@ -23,7 +23,6 @@ cp .env.example .env.test # for testing environment
 ```
 
 Build and start the application with docker-compose
-Obtain or create necessary environment files
 
 ```bash
 ./script/run-docker.sh  --dev
