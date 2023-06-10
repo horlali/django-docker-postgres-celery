@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from icd.models import Category, Diagnosis, File
-from services.emails.messaging import send_mail
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -32,15 +31,3 @@ class FilesSerializier(serializers.ModelSerializer):
     class Meta:
         model = File
         fields = ["file", "uploaded_at"]
-
-    def create(self, validated_data):
-        file_obj = super().create(validated_data)
-
-        # send email after file is uploaded successfully
-        send_mail(
-            receipient=file_obj.user.email,
-            subject="ICD File Upload",
-            content="File uploaded successfully",
-        )
-
-        return file_obj
