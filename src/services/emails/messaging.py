@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
-def send_mail(receipient: str, subject: str, content: str) -> dict[int, str]:
+def send_mail(receipient: str, subject: str, content: str) -> dict[str, int] | None:
     """
     Send a plain text email using SendGrid
     params:
