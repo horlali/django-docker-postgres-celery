@@ -1,3 +1,7 @@
+import os
+import shutil
+
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework.test import APITestCase
@@ -64,6 +68,17 @@ class FileTestSetup(APITestCase):
             email="test@example.com",
             password="testpass",
         )
-        self.file = File.objects.create(file="test.csv", user=self.user)
-        self.file_upload_url = reverse("upload")
+        self.file = File.objects.create(
+            file="test_file/categories.csv",
+            type="CATEGORY",
+            user=self.user,
+        )
+        self.file_upload_url = reverse("upload-csv")
         self.client.force_authenticate(user=self.user)
+
+    def tearDown(self) -> None:
+        shutil.rmtree(
+            os.path.join(settings.MEDIA_ROOT, "files/testuser"),
+            ignore_errors=True,
+        )
+        return super().tearDown()

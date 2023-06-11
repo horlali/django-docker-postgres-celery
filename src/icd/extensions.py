@@ -15,5 +15,10 @@ class ICD_Types(models.TextChoices):
     ICD_11 = "ICD_11", "ICD_11"
 
 
+class FileType(models.TextChoices):
+    CATEGORY = "CATEGORY", "CATEGORY"
+    DIAGNOSIS = "DIAGNOSIS", "DIAGNOSIS"
+
+
 def file_upload_path(instance, filename: str) -> str:
-    return f"files/{instance.user.username}/{filename}"
+    return f"files/{instance.user.username}/{instance.type}/{filename}"

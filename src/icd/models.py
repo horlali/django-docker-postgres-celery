@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from icd.extensions import ICD_Types, IcdBaseModel, file_upload_path
+from icd.extensions import FileType, ICD_Types, IcdBaseModel, file_upload_path
 
 
 class Category(IcdBaseModel):
@@ -9,6 +9,7 @@ class Category(IcdBaseModel):
     category_title = models.CharField(max_length=1024)
 
     class Meta:
+        verbose_name_plural = "Categories"
         ordering = ["category_code"]
 
     def __str__(self):
@@ -21,7 +22,11 @@ class Diagnosis(IcdBaseModel):
         choices=ICD_Types.choices,
         default=ICD_Types.ICD_10,
     )
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        Category,
+        related_name="diagnoses",
+        on_delete=models.CASCADE,
+    )
     diagnosis_code = models.CharField(max_length=10, blank=True)
     abbreviated_desc = models.CharField(max_length=2048)
     full_desc = models.TextField(max_length=2048)
@@ -37,6 +42,10 @@ class Diagnosis(IcdBaseModel):
 
 class File(models.Model):
     file = models.FileField(upload_to=file_upload_path)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    type = models.CharField(max_length=12, choices=FileType.choices)
+    user = models.ForeignKey(User, related_name="files", on_delete=models.CASCADE)
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-uploaded_at"]

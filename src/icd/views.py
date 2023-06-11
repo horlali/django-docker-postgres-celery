@@ -4,7 +4,7 @@ from rest_framework.response import Response
 
 from icd.models import Category, Diagnosis, File
 from icd.paginations import CustomPagination
-from icd.serializers import CategorySerializer, DiagnosisSerializer, FilesSerializier
+from icd.serializers import CategorySerializer, DiagnosisSerializer, FileSerializier
 
 
 class CategoryListCreateView(ListCreateAPIView):
@@ -37,7 +37,7 @@ class DiagnosisDetailView(RetrieveUpdateDestroyAPIView):
 
 class UploadICDFileView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = FilesSerializier
+    serializer_class = FileSerializier
 
     def get_queryset(self):
         return File.objects.filter(user=self.request.user)
