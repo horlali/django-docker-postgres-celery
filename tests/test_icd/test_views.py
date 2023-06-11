@@ -1,5 +1,4 @@
 import os
-from unittest.mock import patch
 
 from rest_framework import status
 
