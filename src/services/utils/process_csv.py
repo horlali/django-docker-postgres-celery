@@ -69,6 +69,6 @@ def add_diagnosis_data_to_db(csv_file: PathLike) -> None:
             )
         )
 
-    Diagnosis.objects.bulk_create(dataset, ignore_conflicts=True)
+    Diagnosis.objects.bulk_create(dataset, ignore_conflicts=True, batch_size=1000)
 
     return
