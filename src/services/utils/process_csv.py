@@ -1,6 +1,7 @@
 from os import PathLike
 
 import pandas as pd
+from celery import shared_task
 
 from icd.models import Category, Diagnosis
 
@@ -15,6 +16,7 @@ DIAGNOSIS_COLUMNS = [
 ]
 
 
+@shared_task()
 def add_category_data_to_db(csv_file: PathLike) -> None:
     """Adds category data to the database from a CSV file.
 
@@ -38,6 +40,7 @@ def add_category_data_to_db(csv_file: PathLike) -> None:
     return
 
 
+@shared_task()
 def add_diagnosis_data_to_db(csv_file: PathLike) -> None:
     """Adds Diagnosis data to the database from a CSV file.
 

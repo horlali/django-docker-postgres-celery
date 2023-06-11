@@ -101,10 +101,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# SWAGGER SETTINGS
+# Swagger Settings
 SWAGGER_SETTINGS = {
     "SECURITY_DEFINITIONS": {
         "Basic": {"type": "basic"},
     },
     "LOGIN_URL": "/admin/login",
+    "LOGOUT_URL": "/admin/logout",
 }

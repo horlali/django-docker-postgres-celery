@@ -6,7 +6,7 @@ from diagnosis.settings.base import *
 
 # Load environment file
 ENV_DIR = BASE_DIR.parent
-load_dotenv(os.path.join(ENV_DIR, ".env.prod"))
+load_dotenv(os.path.join(ENV_DIR, ".env"))
 
 # Debug Mode
 DEBUG = False
@@ -29,7 +29,10 @@ DATABASES = {
     }
 }
 
-# CORS
+# Celery settings
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER")
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
+
 # CORS
 CORS_ALLOWED_ORIGINS = [
     os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000"),

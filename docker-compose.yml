@@ -1,18 +1,23 @@
 version: "3.7"
 
 services:
-  # Postgres db
+  # Postgres
   diagnosis.db:
     image: postgres:latest
     ports:
       - "5432:5432"
     volumes:
-      - pg_data:/var/lib/postgresql/data/
+      - diagnosis_data:/var/lib/postgresql/data/
     environment:
       POSTGRES_DB: ${POSTGRES_DB_NAME:?err}
       POSTGRES_USER: ${POSTGRES_USER:?err}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?err}
     container_name: diagnosis-db
+
+  # Redis
+  redis:
+    image: redis:latest
+    container_name: diagnosis-redis
 
   # Application
   diagnosis.api:
@@ -27,7 +32,39 @@ services:
       - .:/app
     depends_on:
       - diagnosis.db
+      - redis
     container_name: diagnosis-api
 
+  # Celery
+  diagnosis.celery:
+    build: .
+    image: diagnosis.celery:latest
+    command: ./scripts/run-celery.sh
+    volumes:
+      - .:/app
+    environment:
+      - CELERY_BROKER=${CELERY_BROKER:?err}
+      - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND:?err}
+    depends_on:
+      - diagnosis.api
+      - redis
+    container_name: diagnosis-celery
+
+  # Flower
+  diagnosis.flower:
+    build: .
+    image: diagnosis.flower:latest
+    ports:
+      - '5555:5555'
+    command: ./scripts/run-flower.sh
+    environment:
+      - CELERY_BROKER=${CELERY_BROKER:?err}
+      - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND:?err}
+    depends_on:
+      - diagnosis.api
+      - redis
+      - diagnosis.celery
+    container_name: diagnosis-flower
+
 volumes:
-  pg_data:
+  diagnosis_data:

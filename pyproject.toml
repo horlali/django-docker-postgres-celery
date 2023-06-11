@@ -18,6 +18,9 @@ django-cors-headers = "^4.0.0"
 whitenoise = "^6.4.0"
 sendgrid = "^6.10.0"
 pandas = "^2.0.2"
+celery = "^5.3.0"
+flower = "^1.2.0"
+redis = "^4.5.5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"
