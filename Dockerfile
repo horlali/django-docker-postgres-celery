@@ -37,7 +37,7 @@ WORKDIR ${PROJECT_DIR}
 COPY pyproject.toml poetry.lock ${PROJECT_DIR}
 
 # Install dependencies:
-RUN poetry install --without dev
+RUN poetry install
 
 EXPOSE 8000
 

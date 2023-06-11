@@ -3,6 +3,7 @@
 import logging
 import os
 
+from celery import shared_task
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import ClickTracking, Mail, TrackingSettings
 
@@ -10,7 +11,8 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 
-def send_mail(receipient: str, subject: str, content: str) -> dict[int, str]:
+@shared_task
+def send_mail(receipient: str, subject: str, content: str) -> dict[str, int] | None:
     """
     Send a plain text email using SendGrid
     params:

@@ -93,5 +93,6 @@ class FileViewTest(FileTestSetup):
     def test_add_file(self):
         file_path = os.path.join(os.path.dirname(__file__), "test_files/categories.csv")
         data = {"file": open(file_path, "rb"), "type": "CATEGORY"}
+
         response = self.client.post(self.file_upload_url, data=data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
