@@ -21,7 +21,6 @@ env
 env.dev
 env.prod
 logs
-src/diagnosis/settings/development.py
 src/node_modules
 web/media
 web/static/CACHE
