@@ -65,18 +65,15 @@ elif [ "$2" = "--prod" ];
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
 
         # # Starting Gunicorn server
-        # gunicorn ${DJANGO_WSGI_MODULE}:application \
-        #     --name ${NAME} \
-        #     --chdir ${PROJECT_DIR} \
-        #     --bind=${HOST}:${PORT} \
-        #     --workers ${NUM_WORKERS} \
-        #     --timeout ${TIMEOUT} \
-        #     --log-level=debug \
-        #     --threads=${NUM_THREADS} \
-        #     --worker-class=gevent
-
-        # Starting Development Server
-        python ${PROJECT_DIR}/manage.py runserver ${HOST}:${PORT}
+        gunicorn ${DJANGO_WSGI_MODULE}:application \
+            --name ${NAME} \
+            --chdir ${PROJECT_DIR} \
+            --bind=${HOST}:${PORT} \
+            --workers ${NUM_WORKERS} \
+            --timeout ${TIMEOUT} \
+            --log-level=debug \
+            --threads=${NUM_THREADS} \
+            --worker-class=gevent
 
 else
 echo "Error: server not selected. Please add exactly one server flag
