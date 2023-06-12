@@ -92,11 +92,8 @@ class FileViewTest(FileTestSetup):
 
     def test_add_file(self):
         data = {
-            "file": open(
-                self.storage.path(self.category_csv_file),
-                "rb",
-            ),
-            "file_type": "CATEGORY",
+            "file": open(self.storage.path(self.category_csv_file), "rb"),
+            "record_type": "Category",
         }
 
         response = self.client.post(self.file_upload_url, data=data)
