@@ -14,30 +14,22 @@ git clone https://github.com/horlali/diagnosis-backend
 cd diagnosis-backend/
 ```
 
-Create and fill out the necessary environment files (`.env.dev`, `.env.test`, `.env.prod`) and  variables
+Create the environment file and fill out the variables
 
 ```bash
-cp .env.example .env.dev # for development environment
-cp .env.example .env.prod # for production environment
-cp .env.example .env.test # for testing environment
+cp .env.example .env
 ```
 
 Build and start the application with docker-compose
 
 ```bash
-./script/run-docker.sh  --dev
-```
-
-To run the application in production mode run the script with the `--prod` flag
-
-```bash
-./scripts/run-docker --prod
+./script/run-docker.sh
 ```
 
 You can also add the `-d` flag to run the docker container as a daemon
 
 ```bash
-./scripts/run-docker --prod -d
+./scripts/run-docker -d
 ```
 
 ## Known issues
