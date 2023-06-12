@@ -40,6 +40,10 @@ if [ "$2" = "--dev" ];
         # Django Settings
         export DJANGO_SETTINGS_MODULE=diagnosis.settings.development
 
+        # Migrations
+        python ${PROJECT_DIR}/manage.py makemigrations
+        python ${PROJECT_DIR}/manage.py migrate
+
         # Load Staticfiles
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
 
@@ -60,7 +64,7 @@ elif [ "$2" = "--prod" ];
         # Load Staticfiles
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
 
-        # Starting Gunicorn server
+        # # Starting Gunicorn server
         gunicorn ${DJANGO_WSGI_MODULE}:application \
             --name ${NAME} \
             --chdir ${PROJECT_DIR} \

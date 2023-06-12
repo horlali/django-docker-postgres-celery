@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from rest_framework.test import APITestCase
 
-from icd.models import Category, Diagnosis, File
+from icd.models import Category, CSVFile, Diagnosis
 
 User = get_user_model()
 
@@ -68,8 +68,8 @@ class FileTestSetup(APITestCase):
             email="test@example.com",
             password="testpass",
         )
-        self.file = File.objects.create(
-            file="test_file/categories.csv",
+        self.file = CSVFile.objects.create(
+            file="test_files/categories.csv",
             type="CATEGORY",
             user=self.user,
         )

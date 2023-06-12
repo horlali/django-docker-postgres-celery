@@ -87,12 +87,12 @@ class DiagnosisModelTest(TestCase):
     def test_abbreviated_desc_label(self):
         diagnosis = Diagnosis.objects.get(id=1)
         field_label = diagnosis._meta.get_field("abbreviated_desc").verbose_name
-        self.assertEqual(field_label, "abbreviated desc")
+        self.assertEqual(field_label, "abbreviated description")
 
     def test_full_desc_label(self):
         diagnosis = Diagnosis.objects.get(id=1)
         field_label = diagnosis._meta.get_field("full_desc").verbose_name
-        self.assertEqual(field_label, "full desc")
+        self.assertEqual(field_label, "full description")
 
     def test_icd_type_max_length(self):
         diagnosis = Diagnosis.objects.get(id=1)

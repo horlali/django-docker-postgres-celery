@@ -18,18 +18,16 @@ class Category(IcdBaseModel):
 
 class Diagnosis(IcdBaseModel):
     icd_type = models.CharField(
-        max_length=12,
-        choices=ICD_Types.choices,
-        default=ICD_Types.ICD_10,
+        max_length=12, choices=ICD_Types.choices, default=ICD_Types.ICD_10
     )
     category = models.ForeignKey(
-        Category,
-        related_name="diagnoses",
-        on_delete=models.CASCADE,
+        Category, related_name="diagnoses", on_delete=models.CASCADE
     )
     diagnosis_code = models.CharField(max_length=10, blank=True)
-    abbreviated_desc = models.CharField(max_length=2048)
-    full_desc = models.TextField(max_length=2048)
+    abbreviated_desc = models.CharField(
+        verbose_name="abbreviated description", max_length=2048
+    )
+    full_desc = models.TextField(verbose_name="full description", max_length=2048)
 
     @property
     def full_code(self):
@@ -40,7 +38,7 @@ class Diagnosis(IcdBaseModel):
         ordering = ["id"]
 
 
-class File(models.Model):
+class CSVFile(models.Model):
     file = models.FileField(upload_to=file_upload_path)
     type = models.CharField(max_length=12, choices=FileType.choices)
     user = models.ForeignKey(User, related_name="files", on_delete=models.CASCADE)
