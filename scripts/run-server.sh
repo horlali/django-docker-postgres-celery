@@ -40,6 +40,10 @@ if [ "$2" = "--dev" ];
         # Django Settings
         export DJANGO_SETTINGS_MODULE=diagnosis.settings.development
 
+        # Migrations
+        python ${PROJECT_DIR}/manage.py makemigrations
+        python ${PROJECT_DIR}/manage.py migrate
+
         # Load Staticfiles
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
 
@@ -60,16 +64,19 @@ elif [ "$2" = "--prod" ];
         # Load Staticfiles
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
 
-        # Starting Gunicorn server
-        gunicorn ${DJANGO_WSGI_MODULE}:application \
-            --name ${NAME} \
-            --chdir ${PROJECT_DIR} \
-            --bind=${HOST}:${PORT} \
-            --workers ${NUM_WORKERS} \
-            --timeout ${TIMEOUT} \
-            --log-level=debug \
-            --threads=${NUM_THREADS} \
-            --worker-class=gevent
+        # # Starting Gunicorn server
+        # gunicorn ${DJANGO_WSGI_MODULE}:application \
+        #     --name ${NAME} \
+        #     --chdir ${PROJECT_DIR} \
+        #     --bind=${HOST}:${PORT} \
+        #     --workers ${NUM_WORKERS} \
+        #     --timeout ${TIMEOUT} \
+        #     --log-level=debug \
+        #     --threads=${NUM_THREADS} \
+        #     --worker-class=gevent
+
+        # Starting Development Server
+        python ${PROJECT_DIR}/manage.py runserver ${HOST}:${PORT}
 
 else
 echo "Error: server not selected. Please add exactly one server flag
