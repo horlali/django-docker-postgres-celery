@@ -9,7 +9,7 @@ from services.emails.messaging import send_mail
 def file_post_save(sender, instance, created, **kwargs):
     if created:
         send_mail(
-            receipient=instance.user.email,
+            recipient=instance.user.email,
             subject="ICD File Upload",
             content="File uploaded successfully",
         )

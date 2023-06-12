@@ -12,7 +12,7 @@ logger.setLevel(logging.DEBUG)
 
 
 @shared_task
-def send_mail(receipient: str, subject: str, content: str) -> dict[str, int] | None:
+def send_mail(recipient: str, subject: str, content: str) -> dict[str, int] | None:
     """
     Send a plain text email using SendGrid
     params:
@@ -24,7 +24,7 @@ def send_mail(receipient: str, subject: str, content: str) -> dict[str, int] | N
     """
     message = Mail(
         from_email=os.getenv("SENDGRID_HOST_USER"),
-        to_emails=receipient,
+        to_emails=recipient,
         subject=subject,
         plain_text_content=content,
     )
