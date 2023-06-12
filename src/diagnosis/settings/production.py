@@ -9,7 +9,7 @@ ENV_DIR = BASE_DIR.parent
 load_dotenv(os.path.join(ENV_DIR, ".env"))
 
 # Debug Mode
-DEBUG = False
+DEBUG = True
 
 # Secret Keys
 SECRET_KEY = os.getenv("SECRET_KEY")

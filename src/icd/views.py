@@ -1,8 +1,9 @@
+from rest_framework import status
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
-from icd.models import Category, Diagnosis, File
+from icd.models import Category, CSVFile, Diagnosis
 from icd.paginations import CustomPagination
 from icd.serializers import CategorySerializer, DiagnosisSerializer, FileSerializier
 
@@ -40,11 +41,11 @@ class UploadICDFileView(ListCreateAPIView):
     serializer_class = FileSerializier
 
     def get_queryset(self):
-        return File.objects.filter(user=self.request.user)
+        return CSVFile.objects.filter(user=self.request.user)
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save(user=self.request.user)
 
-        return Response(serializer.data, status=201)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
