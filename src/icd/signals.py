@@ -3,6 +3,7 @@ from django.dispatch import receiver
 
 from icd.models import CSVFile
 from services.emails.messaging import send_mail
+from services.utils.process_csv import add_category_data_to_db, add_diagnosis_data_to_db
 
 
 @receiver(post_save, sender=CSVFile)
