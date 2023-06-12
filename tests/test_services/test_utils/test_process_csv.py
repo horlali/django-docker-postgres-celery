@@ -10,17 +10,17 @@ class TestProcessCSVModule(TestCase):
     def setUp(self):
         self.category_csv_data = "A,Category A\nB,Category B\nC,Category C\n"
         self.category_csv_file = "test_category_data.csv"
+        default_storage.save(self.category_csv_file, ContentFile(self.category_csv_data))
 
-        self.diagnosis_csv_data = "A,1001,A1001,abv. desc 1,full desc 1,cat.title 1\nB,2002,B2002,abv. desc 2,full desc 2,cat.title 2\nC,3003,C3003,abv. desc 3,full desc 3,cat.title 3\nD,4004,D4004,abv. desc 4,full desc 4,cat.title 4\n"  # noqa: E501
-        self.diagnosis_csv_file = "test_diagnosis_data.csv"
-
-        default_storage.save(
-            self.category_csv_file,
-            ContentFile(self.category_csv_data),
+        self.diagnosis_csv_data = (
+            "A,1001,A1001,abv. desc 1,full desc 1,cat.title 1\n"
+            "B,2002,B2002,abv. desc 2,full desc 2,cat.title 2\n"
+            "C,3003,C3003,abv. desc 3,full desc 3,cat.title 3\n"
+            "D,4004,D4004,abv. desc 4,full desc 4,cat.title 4\n"
         )
+        self.diagnosis_csv_file = "test_diagnosis_data.csv"
         default_storage.save(
-            self.diagnosis_csv_file,
-            ContentFile(self.diagnosis_csv_data),
+            self.diagnosis_csv_file, ContentFile(self.diagnosis_csv_data)
         )
 
     def tearDown(self):

@@ -3,10 +3,12 @@ import shutil
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.core.files.base import ContentFile
+from django.core.files.storage import DefaultStorage
 from django.urls import reverse
 from rest_framework.test import APITestCase
 
-from icd.models import Category, CSVFile, Diagnosis
+from icd.models import Category, Diagnosis
 
 User = get_user_model()
 
@@ -63,20 +65,32 @@ class DiagnosisTestSetup(APITestCase):
 
 class FileTestSetup(APITestCase):
     def setUp(self) -> None:
+        self.category_csv_data = (
+            "A00,Cholera\n"
+            "A01,Typhoid and paratyphoid fevers\n"
+            "A010,Typhoid fever\n"
+            "A011,Paratyphoid fever A\n"
+            "A012,Paratyphoid fever B\n"
+            "A013,Paratyphoid fever C\n"
+            "A014,Paratyphoid fever, unspecified\n"
+            "A02,Other salmonella infections\n"
+        )
+        self.category_csv_file = "test_category_data.csv"
+
+        self.storage = DefaultStorage()
+        self.storage.save(self.category_csv_file, ContentFile(self.category_csv_data))
+
         self.user = User.objects.create_user(
             username="testuser",
             email="test@example.com",
             password="testpass",
         )
-        self.file = CSVFile.objects.create(
-            file="test_files/categories.csv",
-            type="CATEGORY",
-            user=self.user,
-        )
+
         self.file_upload_url = reverse("upload-csv")
         self.client.force_authenticate(user=self.user)
 
     def tearDown(self) -> None:
+        self.storage.delete(self.category_csv_file)
         shutil.rmtree(
             os.path.join(settings.MEDIA_ROOT, "files/testuser"),
             ignore_errors=True,

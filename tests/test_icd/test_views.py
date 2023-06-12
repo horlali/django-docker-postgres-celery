@@ -1,5 +1,3 @@
-import os
-
 from rest_framework import status
 
 from tests.test_icd.test_setup import (
@@ -29,7 +27,9 @@ class CategoryViewsTest(CategoryTestSetup):
     def test_add_category(self):
         data = {"category_code": "C01", "category_title": "Category 3"}
         response = self.client.post(
-            self.category_list_create_url, data=data, format="json"
+            self.category_list_create_url,
+            data=data,
+            format="json",
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
@@ -91,8 +91,13 @@ class FileViewTest(FileTestSetup):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_add_file(self):
-        file_path = os.path.join(os.path.dirname(__file__), "test_files/categories.csv")
-        data = {"file": open(file_path, "rb"), "type": "CATEGORY"}
+        data = {
+            "file": open(
+                self.storage.path(self.category_csv_file),
+                "rb",
+            ),
+            "file_type": "CATEGORY",
+        }
 
         response = self.client.post(self.file_upload_url, data=data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)

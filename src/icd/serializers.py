@@ -28,8 +28,9 @@ class DiagnosisSerializer(serializers.ModelSerializer):
 
 class FileSerializier(serializers.ModelSerializer):
     file = serializers.FileField(required=True)
-    type = serializers.ChoiceField(choices=FileType.choices)
+    file_type = serializers.ChoiceField(choices=FileType.choices)
 
     class Meta:
         model = CSVFile
-        fields = ["file", "type", "uploaded_at"]
+        fields = ["file", "file_type", "uploaded_at"]
+        read_only_fields = ["user", "uploaded_at"]

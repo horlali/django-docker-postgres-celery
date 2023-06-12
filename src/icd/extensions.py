@@ -21,4 +21,4 @@ class FileType(models.TextChoices):
 
 
 def file_upload_path(instance, filename: str) -> str:
-    return f"files/{instance.user.username}/{instance.type}/{filename}"
+    return f"files/{instance.user.username}/{instance.file_type}/{filename}"
