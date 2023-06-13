@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from icd.extensions import FileType
-from icd.models import Category, CSVFile, Diagnosis
+from icd.models import Category, Diagnosis, ICDFile
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -26,11 +26,11 @@ class DiagnosisSerializer(serializers.ModelSerializer):
         ]
 
 
-class FileSerializier(serializers.ModelSerializer):
+class ICDFileSerializier(serializers.ModelSerializer):
     file = serializers.FileField(required=True)
     record_type = serializers.ChoiceField(choices=FileType.choices)
 
     class Meta:
-        model = CSVFile
+        model = ICDFile
         fields = ["file", "record_type", "uploaded_at"]
         read_only_fields = ["user", "uploaded_at"]

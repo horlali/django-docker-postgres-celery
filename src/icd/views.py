@@ -6,9 +6,9 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
 from icd.extensions import file_upload_params
-from icd.models import Category, CSVFile, Diagnosis
+from icd.models import Category, Diagnosis, ICDFile
 from icd.paginations import CustomPagination
-from icd.serializers import CategorySerializer, DiagnosisSerializer, FileSerializier
+from icd.serializers import CategorySerializer, DiagnosisSerializer, ICDFileSerializier
 
 
 class CategoryListCreateView(ListCreateAPIView):
@@ -39,13 +39,13 @@ class DiagnosisDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
 
 
-class UploadICDFileView(ListCreateAPIView):
+class ICDFileUploadView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     parser_classes = (MultiPartParser, FileUploadParser)
-    serializer_class = FileSerializier
+    serializer_class = ICDFileSerializier
 
     def get_queryset(self):
-        return CSVFile.objects.filter(user=self.request.user)
+        return ICDFile.objects.filter(user=self.request.user)
 
     @swagger_auto_schema(manual_parameters=file_upload_params)
     def post(self, request, *args, **kwargs):
