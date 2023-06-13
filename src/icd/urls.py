@@ -5,7 +5,7 @@ from icd.views import (
     CategoryListCreateView,
     DiagnosisDetailView,
     DiagnosisListCreateView,
-    UploadICDFileView,
+    ICDFileUploadView,
 )
 
 urlpatterns = [
@@ -13,5 +13,5 @@ urlpatterns = [
     path("category/<int:id>", CategoryDetailView.as_view(), name="category-detail"),
     path("diagnosis", DiagnosisListCreateView.as_view(), name="diagnosis-list-create"),
     path("diagnosis/<int:id>", DiagnosisDetailView.as_view(), name="diagnosis-detail"),
-    path("upload-csv", UploadICDFileView.as_view(), name="upload-csv"),
+    path("upload-csv", ICDFileUploadView.as_view(), name="upload-csv"),
 ]
