@@ -47,6 +47,9 @@ if [ "$2" = "--dev" ];
         # Load Staticfiles
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
 
+        # Create Superuser
+        python ${PROJECT_DIR}/manage.py create_user
+
         # Starting Development Server
         python ${PROJECT_DIR}/manage.py runserver ${HOST}:${PORT}
 
@@ -63,6 +66,9 @@ elif [ "$2" = "--prod" ];
 
         # Load Staticfiles
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
+
+        # Create Superuser
+        python ${PROJECT_DIR}/manage.py create_user
 
         # # Starting Gunicorn server
         gunicorn ${DJANGO_WSGI_MODULE}:application \
