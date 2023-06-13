@@ -40,7 +40,7 @@ file_upload_params = [
         "record_type",
         openapi.IN_FORM,
         type=openapi.TYPE_STRING,
-        description="record type of the file",
-        enum=["Category", "Diagnosis"],
+        description="Record type of the file",
+        enum=[FileType.CATEGORY, FileType.DIAGNOSIS],
     ),
 ]
