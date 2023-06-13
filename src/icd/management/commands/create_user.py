@@ -20,4 +20,4 @@ class Command(BaseCommand):
             )
             self.stdout.write(self.style.SUCCESS("Superuser created successfully!"))
         except Exception as e:
-            logger.error(f"Superuser already exists")
+            logger.error(f"Superuser already exists: {e}")
