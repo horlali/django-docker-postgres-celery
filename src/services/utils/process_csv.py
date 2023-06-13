@@ -31,15 +31,15 @@ def add_category_data_to_db(csv_file: PathLike) -> None:
     category_df.dropna(subset="category_code", inplace=True)
     category_df = category_df.drop_duplicates(subset=["category_code"], keep="first")
 
-    with transaction.atomic():
-        dataset = [
-            Category(category_code=row.category_code, category_title=row.category_title)
-            for row in category_df.itertuples()
-        ]
+    dataset = [
+        Category(category_code=row.category_code, category_title=row.category_title)
+        for row in category_df.itertuples()
+    ]
 
+    with transaction.atomic():
         Category.objects.bulk_create(dataset, ignore_conflicts=True, batch_size=2000)
 
-    return
+    return "finished"
 
 
 @shared_task()
@@ -59,22 +59,22 @@ def add_diagnosis_data_to_db(csv_file: PathLike) -> None:
 
     dataset = list()
 
-    with transaction.atomic():
-        for _index, row in diagnosis_df.iterrows():
-            try:
-                category_obj = Category.objects.get(category_code=row["category_code"])
+    for _index, row in diagnosis_df.iterrows():
+        try:
+            category_obj = Category.objects.get(category_code=row["category_code"])
 
-                dataset.append(
-                    Diagnosis(
-                        category=category_obj,
-                        diagnosis_code=row["diagnosis_code"],
-                        abbreviated_desc=row["abbreviated_description"],
-                        full_desc=row["full_description"],
-                    )
+            dataset.append(
+                Diagnosis(
+                    category=category_obj,
+                    diagnosis_code=row["diagnosis_code"],
+                    abbreviated_desc=row["abbreviated_description"],
+                    full_desc=row["full_description"],
                 )
-            except Category.DoesNotExist:
-                continue
+            )
+        except Category.DoesNotExist:
+            continue
 
+    with transaction.atomic():
         Diagnosis.objects.bulk_create(dataset, ignore_conflicts=True, batch_size=7000)
 
-    return
+    return "finished"

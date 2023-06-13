@@ -1,7 +1,11 @@
+import logging
 import os
 
 from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 
 class Command(BaseCommand):
@@ -16,4 +20,4 @@ class Command(BaseCommand):
             )
             self.stdout.write(self.style.SUCCESS("Superuser created successfully!"))
         except Exception as e:
-            print(e)
+            logger.error(f"Superuser already exists: {e}")
