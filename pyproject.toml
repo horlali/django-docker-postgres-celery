@@ -49,6 +49,7 @@ skip_glob = ["*/migrations/*.py"]
 DJANGO_SETTINGS_MODULE = "diagnosis.settings.testing"
 pythonpath = [".", "src"]
 testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]
 
 [build-system]
 requires = ["poetry-core"]

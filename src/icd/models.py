@@ -40,7 +40,7 @@ class Diagnosis(IcdBaseModel):
 
 class CSVFile(models.Model):
     file = models.FileField(upload_to=file_upload_path)
-    type = models.CharField(max_length=12, choices=FileType.choices)
+    record_type = models.CharField(max_length=12, choices=FileType.choices)
     user = models.ForeignKey(User, related_name="files", on_delete=models.CASCADE)
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
