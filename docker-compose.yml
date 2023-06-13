@@ -39,7 +39,7 @@ services:
   diagnosis.celery:
     build: .
     image: diagnosis.celery:latest
-    command: ./scripts/run-celery.sh
+    command: ./scripts/run-celery.sh --prod
     volumes:
       - .:/app
     environment:
@@ -56,7 +56,7 @@ services:
     image: diagnosis.flower:latest
     ports:
       - '5555:5555'
-    command: ./scripts/run-flower.sh
+    command: ./scripts/run-flower.sh --prod
     environment:
       - CELERY_BROKER=${CELERY_BROKER:?err}
       - CELERY_RESULT_BACKEND=${CELERY_RESULT_BACKEND:?err}

@@ -70,7 +70,7 @@ elif [ "$2" = "--prod" ];
         # Create Superuser
         python ${PROJECT_DIR}/manage.py create_user
 
-        # # Starting Gunicorn server
+        # Starting Gunicorn server
         gunicorn ${DJANGO_WSGI_MODULE}:application \
             --name ${NAME} \
             --chdir ${PROJECT_DIR} \
