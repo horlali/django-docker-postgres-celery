@@ -13,7 +13,7 @@ PRODUCTION_SETTINGS="diagnosis.settings.production"
 
 if [ "$1" = "--dev" ];
     then
-    echo "running flower with development settings"
+    echo "running celery with development settings"
         DJANGO_SETTINGS_MODULE=${DEVELOPMENT_SETTINGS} \
             celery -A ${DJANGO_PROJECT_NAME} \
                 worker -l info
@@ -21,7 +21,7 @@ if [ "$1" = "--dev" ];
 elif [ "$1" = "--prod" ];
     then
 
-    echo "running flower with production settings"
+    echo "running celery with production settings"
         DJANGO_SETTINGS_MODULE=${PRODUCTION_SETTINGS} \
             celery -A ${DJANGO_PROJECT_NAME} \
                 worker -l info
