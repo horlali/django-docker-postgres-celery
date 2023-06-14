@@ -18,7 +18,7 @@ class ICD_Types(models.TextChoices):
     ICD_11 = "ICD_11", "ICD_11"
 
 
-class FileType(models.TextChoices):
+class RecordType(models.TextChoices):
     CATEGORY = "Category", "Category"
     DIAGNOSIS = "Diagnosis", "Diagnosis"
 
@@ -41,6 +41,6 @@ file_upload_params = [
         openapi.IN_FORM,
         type=openapi.TYPE_STRING,
         description="Record type of the file",
-        enum=[FileType.CATEGORY, FileType.DIAGNOSIS],
+        enum=[RecordType.CATEGORY, RecordType.DIAGNOSIS],
     ),
 ]

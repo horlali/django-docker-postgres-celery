@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from icd.extensions import FileType
+from icd.extensions import RecordType
 from icd.models import Category, Diagnosis, ICDFile
 
 
@@ -28,7 +28,7 @@ class DiagnosisSerializer(serializers.ModelSerializer):
 
 class ICDFileSerializier(serializers.ModelSerializer):
     file = serializers.FileField(required=True)
-    record_type = serializers.ChoiceField(choices=FileType.choices)
+    record_type = serializers.ChoiceField(choices=RecordType.choices)
 
     class Meta:
         model = ICDFile
