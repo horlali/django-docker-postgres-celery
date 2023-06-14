@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from icd.extensions import FileType, ICD_Types, IcdBaseModel, file_upload_path
+from icd.extensions import ICD_Types, IcdBaseModel, RecordType, file_upload_path
 
 
 class Category(IcdBaseModel):
@@ -40,7 +40,7 @@ class Diagnosis(IcdBaseModel):
 
 class ICDFile(models.Model):
     file = models.FileField(upload_to=file_upload_path)
-    record_type = models.CharField(max_length=12, choices=FileType.choices)
+    record_type = models.CharField(max_length=12, choices=RecordType.choices)
     user = models.ForeignKey(User, related_name="files", on_delete=models.CASCADE)
 
     uploaded_at = models.DateTimeField(auto_now_add=True)
