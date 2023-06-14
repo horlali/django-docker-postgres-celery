@@ -21,6 +21,7 @@ pandas = "^2.0.2"
 celery = "^5.3.0"
 flower = "^1.2.0"
 redis = "^4.5.5"
+hiredis = "^2.2.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"
@@ -49,7 +50,7 @@ skip_glob = ["*/migrations/*.py"]
 DJANGO_SETTINGS_MODULE = "diagnosis.settings.testing"
 pythonpath = [".", "src"]
 testpaths = ["tests"]
-filterwarnings = ["ignore::DeprecationWarning"]
+filterwarnings = ["ignore::DeprecationWarning", "ignore:No directory at*:UserWarning"]
 
 [build-system]
 requires = ["poetry-core"]

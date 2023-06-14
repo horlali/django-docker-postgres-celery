@@ -29,5 +29,12 @@ DATABASES = {
 CELERY_BROKER_URL = os.getenv("CELERY_BROKER")
 CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
 
+# Dummy Cache Settings
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+    }
+}
+
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True

@@ -1,3 +1,5 @@
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
@@ -11,6 +13,7 @@ from icd.paginations import CustomPagination
 from icd.serializers import CategorySerializer, DiagnosisSerializer, ICDFileSerializier
 
 
+@method_decorator(cache_page(30 * 60), name="dispatch")
 class CategoryListCreateView(ListCreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = CategorySerializer
@@ -25,6 +28,7 @@ class CategoryDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
 
 
+@method_decorator(cache_page(30 * 60), name="dispatch")
 class DiagnosisListCreateView(ListCreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = DiagnosisSerializer
