@@ -56,7 +56,7 @@ class DiagnosisModelTest(TestCase):
         Diagnosis.objects.create(
             icd_type="ICD-10",
             category=category,
-            diagnosis_code=1,
+            diagnosis_code="1",
             abbreviated_desc="Test Diagnosis",
             full_desc="This is a test diagnosis",
         )
@@ -65,7 +65,7 @@ class DiagnosisModelTest(TestCase):
         diagnosis = Diagnosis.objects.get(id=1)
         self.assertEqual(diagnosis.icd_type, "ICD-10")
         self.assertEqual(diagnosis.category.category_code, "A01")
-        self.assertEqual(diagnosis.diagnosis_code, 1)
+        self.assertEqual(diagnosis.diagnosis_code, "1")
         self.assertEqual(diagnosis.abbreviated_desc, "Test Diagnosis")
         self.assertEqual(diagnosis.full_desc, "This is a test diagnosis")
 

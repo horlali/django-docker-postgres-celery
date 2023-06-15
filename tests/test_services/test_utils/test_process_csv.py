@@ -49,19 +49,19 @@ class TestProcessCSVModule(TestCase):
 
         self.assertEqual(len(diagnosis), 3)
         self.assertEqual(diagnosis[0].category, cat_1)
-        self.assertEqual(diagnosis[0].diagnosis_code, 1001)
+        self.assertEqual(diagnosis[0].diagnosis_code, "1001")
         self.assertEqual(diagnosis[0].full_code, "A1001")
         self.assertEqual(diagnosis[0].abbreviated_desc, "abv. desc 1")
         self.assertEqual(diagnosis[0].full_desc, "full desc 1")
 
         self.assertEqual(diagnosis[1].category, cat_2)
-        self.assertEqual(diagnosis[1].diagnosis_code, 2002)
+        self.assertEqual(diagnosis[1].diagnosis_code, "2002")
         self.assertEqual(diagnosis[1].full_code, "B2002")
         self.assertEqual(diagnosis[1].abbreviated_desc, "abv. desc 2")
         self.assertEqual(diagnosis[1].full_desc, "full desc 2")
 
         self.assertEqual(diagnosis[2].category, cat_3)
-        self.assertEqual(diagnosis[2].diagnosis_code, 3003)
+        self.assertEqual(diagnosis[2].diagnosis_code, "3003")
         self.assertEqual(diagnosis[2].full_code, "C3003")
         self.assertEqual(diagnosis[2].abbreviated_desc, "abv. desc 3")
         self.assertEqual(diagnosis[2].full_desc, "full desc 3")

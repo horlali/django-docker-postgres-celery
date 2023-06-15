@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from icd.extensions import ICD_Types, IcdBaseModel, RecordType, file_upload_path
@@ -24,9 +23,7 @@ class Diagnosis(IcdBaseModel):
     category = models.ForeignKey(
         Category, related_name="diagnoses", on_delete=models.CASCADE
     )
-    diagnosis_code = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(9)], null=True, blank=True
-    )
+    diagnosis_code = models.CharField(max_length=10, blank=True)
     abbreviated_desc = models.CharField(
         verbose_name="abbreviated description", max_length=2048
     )
