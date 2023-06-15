@@ -56,7 +56,7 @@ class DiagnosisViewTest(DiagnosisTestSetup):
         data = {
             "icd_type": "ICD_9",
             "category": 1,
-            "diagnosis_code": "A01",
+            "diagnosis_code": 1,
             "abbreviated_desc": "Abbreviated Description 1",
             "full_desc": "Full Description 2",
         }
@@ -73,7 +73,7 @@ class DiagnosisViewTest(DiagnosisTestSetup):
         data = {
             "icd_type": "ICD_9",
             "category": 1,
-            "diagnosis_code": "Z01",
+            "diagnosis_code": 2,
             "abbreviated_desc": "Abbreviated Description 1",
             "full_desc": "Full Description 2",
         }

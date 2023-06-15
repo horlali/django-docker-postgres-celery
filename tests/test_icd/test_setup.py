@@ -38,21 +38,21 @@ class DiagnosisTestSetup(APITestCase):
         self.diagnosis_1 = Diagnosis.objects.create(
             icd_type="ICD_9",
             category=self.category,
-            diagnosis_code="A01",
+            diagnosis_code="1",
             abbreviated_desc="Abbreviated Description 1",
             full_desc="Full Description 2",
         )
         self.diagnosis_2 = Diagnosis.objects.create(
             icd_type="ICD_10",
             category=self.category,
-            diagnosis_code="B01",
+            diagnosis_code="1",
             abbreviated_desc="Abbreviated Description 2",
             full_desc="Full Description 2",
         )
         self.diagnosis_3 = Diagnosis.objects.create(
             icd_type="ICD_11",
             category=self.category,
-            diagnosis_code="C01",
+            diagnosis_code="1",
             abbreviated_desc="Abbreviated Description 3",
             full_desc="Full Description 3",
         )
