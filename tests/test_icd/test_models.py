@@ -56,7 +56,7 @@ class DiagnosisModelTest(TestCase):
         Diagnosis.objects.create(
             icd_type="ICD-10",
             category=category,
-            diagnosis_code="A001",
+            diagnosis_code="1",
             abbreviated_desc="Test Diagnosis",
             full_desc="This is a test diagnosis",
         )
@@ -65,7 +65,7 @@ class DiagnosisModelTest(TestCase):
         diagnosis = Diagnosis.objects.get(id=1)
         self.assertEqual(diagnosis.icd_type, "ICD-10")
         self.assertEqual(diagnosis.category.category_code, "A01")
-        self.assertEqual(diagnosis.diagnosis_code, "A001")
+        self.assertEqual(diagnosis.diagnosis_code, "1")
         self.assertEqual(diagnosis.abbreviated_desc, "Test Diagnosis")
         self.assertEqual(diagnosis.full_desc, "This is a test diagnosis")
 
@@ -98,11 +98,6 @@ class DiagnosisModelTest(TestCase):
         diagnosis = Diagnosis.objects.get(id=1)
         max_length = diagnosis._meta.get_field("icd_type").max_length
         self.assertEqual(max_length, 12)
-
-    def test_diagnosis_code_max_length(self):
-        diagnosis = Diagnosis.objects.get(id=1)
-        max_length = diagnosis._meta.get_field("diagnosis_code").max_length
-        self.assertEqual(max_length, 10)
 
     def test_abbreviated_desc_max_length(self):
         diagnosis = Diagnosis.objects.get(id=1)

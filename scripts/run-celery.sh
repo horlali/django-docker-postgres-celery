@@ -31,7 +31,7 @@ echo "Error: runtime not selected. Please add exactly one runtime flag
 to select a runtime for the app.
 options:
     --dev: for a development runtime
-    --prod: for a production runtime
+    --prod: for a production runtime 
  "
     exit 128
 fi

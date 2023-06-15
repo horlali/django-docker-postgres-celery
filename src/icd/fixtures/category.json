@@ -1,0 +1,52 @@
+[
+    {
+        "model": "icd.Category",
+        "fields": {
+            "id": 1,
+            "category_code": "A083",
+            "category_title": "Astrovirus enteritis",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    },
+    {
+        "model": "icd.Category",
+        "fields": {
+            "id": 2,
+            "category_code": "A083",
+            "category_title": "Other viral enteritis",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    },
+    {
+        "model": "icd.Category",
+        "fields": {
+            "id": 3,
+            "category_code": "A084",
+            "category_title": "Viral intestinal infection, unspecified",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    },
+    {
+        "model": "icd.Category",
+        "fields": {
+            "id": 4,
+            "category_code": "A088",
+            "category_title": "Other specified intestinal infections",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    },
+    {
+        "model": "icd.Category",
+        "fields": {
+            "id": 5,
+            "category_code": "A15",
+            "category_title": "Respiratory tuberculosis",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    }
+]

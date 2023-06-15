@@ -1,0 +1,67 @@
+[
+    {
+        "model": "icd.Diagnosis",
+        "fields": {
+            "id": 1,
+            "icd_type": "ICD_10",
+            "category": 1,
+            "diagnosis_code": 2,
+            "abbreviated_desc": "Adenoviral enteritis",
+            "full_desc": "Adenoviral enteritis",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    },
+    {
+        "model": "icd.Diagnosis",
+        "fields": {
+            "id": 2,
+            "icd_type": "ICD_10",
+            "category": 2,
+            "diagnosis_code": 2,
+            "abbreviated_desc": "Other viral enteritis",
+            "full_desc": "Other viral enteritis",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    },
+    {
+        "model": "icd.Diagnosis",
+        "fields": {
+            "id": 3,
+            "icd_type": "ICD_10",
+            "category": 3,
+            "diagnosis_code": 4,
+            "abbreviated_desc": "Viral intestinal infection, unspecified",
+            "full_desc": "Viral intestinal infection, unspecified",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    },
+    {
+        "model": "icd.Diagnosis",
+        "fields": {
+            "id": 4,
+            "icd_type": "ICD_10",
+            "category": 4,
+            "diagnosis_code": 3,
+            "abbreviated_desc": "Other specified intestinal infections",
+            "full_desc": "Other specified intestinal infections",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    },
+    {
+        "model": "icd.Diagnosis",
+        "fields": {
+            "id": 5,
+            "icd_type": "ICD_10",
+            "category": 5,
+            "diagnosis_code": 9,
+            "abbreviated_desc": "Respiratory tuberculosis unspecified",
+            "full_desc": "Respiratory tuberculosis unspecified",
+            "created_at": "2019-11-11T12:00:00Z",
+            "updated_at": "2019-11-11T12:00:00Z"
+        }
+    }
+]
