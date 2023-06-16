@@ -44,6 +44,10 @@ if [ "$2" = "--dev" ];
         python ${PROJECT_DIR}/manage.py makemigrations
         python ${PROJECT_DIR}/manage.py migrate
 
+        # Load fixtures
+        python ${PROJECT_DIR}/manage.py loaddata category
+        python ${PROJECT_DIR}/manage.py loaddata diagnosis
+
         # Load Staticfiles
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
 
@@ -63,6 +67,10 @@ elif [ "$2" = "--prod" ];
         # Migrations
         python ${PROJECT_DIR}/manage.py makemigrations
         python ${PROJECT_DIR}/manage.py migrate
+
+        # Load fixtures
+        python ${PROJECT_DIR}/manage.py loaddata category
+        python ${PROJECT_DIR}/manage.py loaddata diagnosis
 
         # Load Staticfiles
         python ${PROJECT_DIR}/manage.py collectstatic --no-input
