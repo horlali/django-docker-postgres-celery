@@ -5,6 +5,14 @@ from icd.models import Category, Diagnosis, ICDFile
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    category_code = serializers.CharField(max_length=25, required=True)
+    category_title = serializers.CharField(max_length=1024, required=True)
+
+    def validate_category_code(self, value):
+        if Category.objects.filter(category_code__iexact=value).exists():
+            raise serializers.ValidationError("Cateogory code already exists")
+        return value
+
     class Meta:
         model = Category
         fields = ["id", "category_code", "category_title"]
