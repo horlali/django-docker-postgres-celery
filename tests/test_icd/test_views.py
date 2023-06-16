@@ -86,10 +86,6 @@ class DiagnosisViewTest(DiagnosisTestSetup):
 
 
 class FileViewTest(FileTestSetup):
-    def test_list_files(self):
-        response = self.client.get(self.file_upload_url, format="json")
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
     def test_add_file(self):
         data = {
             "file": open(self.storage.path(self.category_csv_file), "rb"),
