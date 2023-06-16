@@ -17,7 +17,7 @@ from icd.paginations import CustomPagination
 from icd.serializers import CategorySerializer, DiagnosisSerializer, ICDFileSerializier
 
 
-@method_decorator(cache_page(30 * 60), name="dispatch")
+@method_decorator(cache_page(10 * 60), name="dispatch")
 class CategoryListCreateView(ListCreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = CategorySerializer
@@ -32,7 +32,7 @@ class CategoryDetailView(RetrieveUpdateDestroyAPIView):
     lookup_field = "id"
 
 
-@method_decorator(cache_page(30 * 60), name="dispatch")
+@method_decorator(cache_page(10 * 60), name="dispatch")
 class DiagnosisListCreateView(ListCreateAPIView):
     permission_classes = [AllowAny]
     serializer_class = DiagnosisSerializer
