@@ -9,6 +9,14 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ["id", "category_code", "category_title"]
 
+    def validate(self, attrs):
+        category_code = attrs.get("category_code")
+
+        if Category.objects.filter(category_code__iexact=category_code).exists():
+            raise serializers.ValidationError("Cateogory code already exists")
+
+        return super().validate(attrs)
+
 
 class DiagnosisSerializer(serializers.ModelSerializer):
     category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
