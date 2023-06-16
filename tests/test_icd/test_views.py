@@ -33,6 +33,30 @@ class CategoryViewsTest(CategoryTestSetup):
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
+    def test_cannot_add_category_with_existing_category_code(self):
+        data = {"category_code": "A01", "category_title": "Category 3"}
+        response = self.client.post(
+            self.category_list_create_url,
+            data=data,
+            format="json",
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.json()["category_code"], ["Cateogory code already exists"]
+        )
+
+    def test_cannot_add_category_with_existing_caseinsensitive_category_code(self):
+        data = {"category_code": "a01", "category_title": "Category 3"}
+        response = self.client.post(
+            self.category_list_create_url,
+            data=data,
+            format="json",
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(
+            response.json()["category_code"], ["Cateogory code already exists"]
+        )
+
     def test_get_category(self):
         response = self.client.get(self.category_detail_url, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
