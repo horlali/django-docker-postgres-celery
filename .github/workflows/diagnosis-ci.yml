@@ -1,4 +1,4 @@
-name: Diagonis CI
+name: diagonis-testing
 
 on:
   push:
