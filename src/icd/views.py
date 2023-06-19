@@ -19,6 +19,8 @@ from icd.serializers import CategorySerializer, DiagnosisSerializer, ICDFileSeri
 
 @method_decorator(cache_page(10 * 60), name="dispatch")
 class CategoryListCreateView(ListCreateAPIView):
+    """List all categories or create a new category."""
+
     permission_classes = [AllowAny]
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
@@ -26,6 +28,8 @@ class CategoryListCreateView(ListCreateAPIView):
 
 
 class CategoryDetailView(RetrieveUpdateDestroyAPIView):
+    """Retrieve, update or delete a category instance."""
+
     permission_classes = [AllowAny]
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
@@ -34,6 +38,8 @@ class CategoryDetailView(RetrieveUpdateDestroyAPIView):
 
 @method_decorator(cache_page(10 * 60), name="dispatch")
 class DiagnosisListCreateView(ListCreateAPIView):
+    """List all diagnoses or create a new diagnosis."""
+
     permission_classes = [AllowAny]
     serializer_class = DiagnosisSerializer
     queryset = Diagnosis.objects.all()
@@ -41,6 +47,8 @@ class DiagnosisListCreateView(ListCreateAPIView):
 
 
 class DiagnosisDetailView(RetrieveUpdateDestroyAPIView):
+    """Retrieve, update or delete a diagnosis instance."""
+
     permission_classes = [AllowAny]
     serializer_class = DiagnosisSerializer
     queryset = Diagnosis.objects.all()
@@ -48,6 +56,8 @@ class DiagnosisDetailView(RetrieveUpdateDestroyAPIView):
 
 
 class ICDFileUploadView(CreateAPIView):
+    """Upload an ICD file."""
+
     permission_classes = [IsAuthenticated]
     serializer_class = ICDFileSerializier
     parser_classes = (MultiPartParser, FileUploadParser)
