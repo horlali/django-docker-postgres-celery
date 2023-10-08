@@ -76,10 +76,7 @@ jobs:
       #              run quality checks
       #----------------------------------------------
       - name: Code Quality
-        run: |
-          ./scripts/run-black.sh
-          ./scripts/run-isort.sh
-          ./scripts/run-flake8.sh
+        run: ./scripts/run-linters.sh
 
       #----------------------------------------------
       #              run test suite

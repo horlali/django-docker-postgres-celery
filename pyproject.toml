@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.11"
 django = "^4.2.2"
 djangorestframework = "^3.14.0"
-psycopg2 = "^2.9.6"
+psycopg2-binary = "^2.9.9"
 python-dotenv = "^1.0.0"
 gunicorn = "^20.1.0"
 gevent = "^22.10.2"
@@ -50,7 +50,10 @@ skip_glob = ["*/migrations/*.py"]
 DJANGO_SETTINGS_MODULE = "diagnosis.settings.testing"
 pythonpath = [".", "src"]
 testpaths = ["tests"]
-filterwarnings = ["ignore::DeprecationWarning", "ignore:No directory at*:UserWarning"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore:No directory at*:UserWarning",
+]
 
 [build-system]
 requires = ["poetry-core"]
