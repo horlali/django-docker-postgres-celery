@@ -1,7 +1,7 @@
-# DIAGNOSIS BACKEND SYSTEM
+# DJANGO BACKEND WITH 
 
-[![Diagnosis CI](https://github.com/horlali/diagnosis-backend/actions/workflows/diagnosis-ci.yml/badge.svg)](https://github.com/horlali/diagnosis-backend/actions/workflows/diagnosis-ci.yml)
-[![CodeCov](https://codecov.io/gh/horlali/diagnosis-backend/branch/main/graph/badge.svg?token=XPAKK65GCC)](https://codecov.io/gh/horlali/diagnosis-backend)
+[![Diagnosis CI](https://github.com/horlali/django-docker-postgres-celery/actions/workflows/diagnosis-ci.yml/badge.svg)](https://github.com/horlali/django-docker-postgres-celery/actions/workflows/diagnosis-ci.yml)
+[![codecov](https://codecov.io/gh/horlali/django-docker-postgres-celery/graph/badge.svg?token=XPAKK65GCC)](https://codecov.io/gh/horlali/django-docker-postgres-celery)
 
 Diagnosis backend challenge
 
@@ -10,8 +10,8 @@ Diagnosis backend challenge
 Clone repository to your local and navigate into the folder
 
 ```bash
-git clone https://github.com/horlali/diagnosis-backend
-cd diagnosis-backend/
+git clone https://github.com/horlali/django-docker-postgres-celery
+cd django-docker-postgres-celery/
 ```
 
 Create the environment file and fill out the variables
@@ -70,7 +70,7 @@ poetry shell
 
 ## Running tests
 
-In the root of the repository `:~/diagnosis-backend` run the scripts below
+In the root of the repository `:~/django-docker-postgres-celery` run the scripts below
 
 ```bash
 ./scripts/run-tests.sh
@@ -80,7 +80,7 @@ In the root of the repository `:~/diagnosis-backend` run the scripts below
 
 In the `scripts/` folder there are 3 scripts that can be used to check and correct formatting, styling and linting problems `run-black.sh`, `run-flake8.sh`, `run-isort.sh`. The scripts will only check by default, if you would like to correct the errors you need to pass the `--fix` option. If you are using `zsh` and got some errors, consider execution via `bash`
 
-In the root of the repository `:~/diagnosis-backend` run the scripts below
+In the root of the repository `:~/django-docker-postgres-celery` run the scripts below
 
 ```bash
 ./scripts/run-black.sh # add --fix flag to fix black formatting issues
