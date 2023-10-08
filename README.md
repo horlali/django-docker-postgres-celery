@@ -1,4 +1,4 @@
-# DJANGO BACKEND WITH 
+# DJANGO BACKEND WITH POSTGRES ABD CELERY
 
 [![Diagnosis CI](https://github.com/horlali/django-docker-postgres-celery/actions/workflows/diagnosis-ci.yml/badge.svg)](https://github.com/horlali/django-docker-postgres-celery/actions/workflows/diagnosis-ci.yml)
 [![codecov](https://codecov.io/gh/horlali/django-docker-postgres-celery/graph/badge.svg?token=XPAKK65GCC)](https://codecov.io/gh/horlali/django-docker-postgres-celery)
