@@ -1,4 +1,4 @@
-# Diagnosis Backend Pull Request Template
+# Pull Request Template
 
 ## Description
 
